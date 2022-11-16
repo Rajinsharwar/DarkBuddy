@@ -26,7 +26,7 @@ add_action( 'wp_enqueue_scripts', 'darkbuddy_assets' );
 
 function darkbuddy_assets() {
     wp_enqueue_style( 'darkbuddy-style', plugins_url( '/css/main.css' , __FILE__ ) );
-    wp_enqueue_script( 'darkbuddy-style', plugins_url( '/main.js' , __FILE__ ), array( 'jquery' ), '1.0', true );
+    wp_enqueue_script( 'darkbuddy-style', plugins_url( '/js/main.js' , __FILE__ ), '1.0', true );
 }
 
 

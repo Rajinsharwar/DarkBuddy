@@ -7,6 +7,10 @@
  * Version: 1.0.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 
 if ( 'buddyboss-theme' !== get_template() ) {
     function darkbuddy_admin_notice(){

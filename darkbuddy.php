@@ -7,19 +7,26 @@
  * Version: 1.0.0
  */
 
-function darkbuddy_enqueue_js() {
-    $file_url = plugins_url('/js/main.js', __FILE__);
-    wp_enqueue_style( 'darkbuddy_js', $file_url);
+// function darkbuddy_enqueue_js() {
+//     $file_url = plugins_url('/js/main.js', __FILE__);
+//     wp_enqueue_style( 'darkbuddy_js', $file_url);
+// }
+
+// add_action('wp_enqueue_scripts', 'darkbuddy_enqueue_js' );
+
+
+// function darkbuddy_enqueue_css() {
+//     $file_url = plugins_url('/css/main.css', __FILE__);
+//     wp_enqueue_style( 'darkbuddy_css', $file_url);
+// }
+
+// add_action('wp_enqueue_scripts', 'darkbuddy_enqueue_css' );
+
+add_action( 'wp_enqueue_scripts', 'my_plugin_assets' );
+
+function my_plugin_assets() {
+    wp_enqueue_style( 'custom-gallery', plugins_url( '/css/main.css' , __FILE__ ) );
+    wp_enqueue_script( 'custom-gallery', plugins_url( '/js/main.js' , __FILE__ ) );
 }
-
-add_action('wp_enqueue_scripts', 'darkbuddy_enqueue_js' );
-
-
-function darkbuddy_enqueue_css() {
-    $file_url = plugins_url('/css/main.css', __FILE__);
-    wp_enqueue_style( 'darkbuddy_css', $file_url);
-}
-
-add_action('wp_enqueue_scripts', 'darkbuddy_enqueue_css' );
 
 

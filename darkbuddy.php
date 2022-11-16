@@ -7,38 +7,20 @@
  * Version: 1.0.0
  */
 
-// function darkbuddy_enqueue_js() {
-//     $file_url = plugins_url('/js/main.js', __FILE__);
-//     wp_enqueue_style( 'darkbuddy_js', $file_url);
-// }
 
-// add_action('wp_enqueue_scripts', 'darkbuddy_enqueue_js' );
-
-
-// function darkbuddy_enqueue_css() {
-//     $file_url = plugins_url('/css/main.css', __FILE__);
-//     wp_enqueue_style( 'darkbuddy_css', $file_url);
-// }
-
-// add_action('wp_enqueue_scripts', 'darkbuddy_enqueue_css' );
-
-<?php
-$theme = wp_get_theme(); // gets the current theme
-if ( 'BuddyBoss Theme' == $theme->parent_theme ) {
-    add_action( 'wp_enqueue_scripts', 'darkbuddy_assets' );
-
-    function darkbuddy_assets() {
-        wp_enqueue_style( 'darkbuddy-style', plugins_url( '/css/main.css' , __FILE__ ) );
-        wp_enqueue_script( 'darkbuddy-style', plugins_url( '/js/main.js' , __FILE__ ), '1.0', true );
+if ( 'buddyboss-theme' !== get_template() ) {
+    function darkbuddy_admin_notice(){
+    echo '<div class="error"><p>DarkBuddy plugin is activated, but will not function as BuddyBoss theme, or BuddyBoss Child theme is not activated.</p>
+         </div>';
     }
+    add_action('admin_notices', 'darkbuddy_admin_notice');
+    return;
 }
 
 
-// add_action( 'wp_enqueue_scripts', 'darkbuddy_assets' );
+add_action( 'wp_enqueue_scripts', 'darkbuddy_assets' );
 
-// function darkbuddy_assets() {
-//     wp_enqueue_style( 'darkbuddy-style', plugins_url( '/css/main.css' , __FILE__ ) );
-//     wp_enqueue_script( 'darkbuddy-style', plugins_url( '/js/main.js' , __FILE__ ), '1.0', true );
-// }
-
-
+function darkbuddy_assets() {
+    wp_enqueue_style( 'darkbuddy-style', plugins_url( '/css/main.css' , __FILE__ ) );
+    wp_enqueue_script( 'darkbuddy-style', plugins_url( '/js/main.js' , __FILE__ ), '1.0', true );
+}

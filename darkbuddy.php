@@ -22,11 +22,23 @@
 
 // add_action('wp_enqueue_scripts', 'darkbuddy_enqueue_css' );
 
-add_action( 'wp_enqueue_scripts', 'darkbuddy_assets' );
+<?php
+$theme = wp_get_theme(); // gets the current theme
+if ( 'BuddyBoss Theme' == $theme->parent_theme ) {
+    add_action( 'wp_enqueue_scripts', 'darkbuddy_assets' );
 
-function darkbuddy_assets() {
-    wp_enqueue_style( 'darkbuddy-style', plugins_url( '/css/main.css' , __FILE__ ) );
-    wp_enqueue_script( 'darkbuddy-style', plugins_url( '/js/main.js' , __FILE__ ), '1.0', true );
+    function darkbuddy_assets() {
+        wp_enqueue_style( 'darkbuddy-style', plugins_url( '/css/main.css' , __FILE__ ) );
+        wp_enqueue_script( 'darkbuddy-style', plugins_url( '/js/main.js' , __FILE__ ), '1.0', true );
+    }
 }
+
+
+// add_action( 'wp_enqueue_scripts', 'darkbuddy_assets' );
+
+// function darkbuddy_assets() {
+//     wp_enqueue_style( 'darkbuddy-style', plugins_url( '/css/main.css' , __FILE__ ) );
+//     wp_enqueue_script( 'darkbuddy-style', plugins_url( '/js/main.js' , __FILE__ ), '1.0', true );
+// }
 
 
